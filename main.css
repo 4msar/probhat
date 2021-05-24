@@ -10,34 +10,6 @@ a {
     text-decoration: none;
 }
 
-/* Clear Fix */
-.cf:before,
-.cf:after {
-    content: " ";
-    display: table;
-}
-
-.cf:after {
-    clear: both;
-}
-
-.cf {
-    *zoom: 1;
-}
-/* Clearfix end */
-
-.left {
-    float: left;
-}
-
-.right {
-    float: right;
-}
-
-ul {
-    list-style: none;
-}
-
 html,
 body {
     height: 100%;
@@ -47,15 +19,18 @@ body {
 #wrapper {
     background: #fbfbfb;
     height: 100%;
+    display: flex;
 }
 
 footer {
+    width: 20%;
     color: #eee;
     background: #1f1f1f;
 }
 
 main {
-    width: 100%;
+    width: 80%;
+    margin: 0 10px;
 }
 
 main .content textarea {
@@ -74,54 +49,19 @@ footer .wrapper {
     padding: 20px;
 }
 
-/* Desktop */
-@media all and (min-width: 801px) {
-    #wrapper {
-        overflow: hidden;
-    }
-
-    main,
-    footer {
-        float: left;
-    }
-
-    main {
-        height: 100%;
-        margin-right: -260px;
-    }
-
-    main .content {
-        height: 100%;
-        margin: 0 280px 0 20px;
-        overflow-y: auto;
-        cursor: text;
-    }
-
-    footer {
-        width: 260px;
-        height: auto !important;
-        min-height: 100%;
-    }
-
-    footer .toggle {
-        margin: 20px 0 40px;
-    }
-
-    .mobile-only {
-        display: none;
-    }
-}
-
 /* Mobile */
 @media all and (max-width: 800px) {
     #wrapper {
         position: relative;
         height: auto !important;
         min-height: 100%;
+        flex-direction: column;
     }
 
     main {
         min-height: 100%;
+        width: 100%;
+        margin: 0;
     }
 
     main .content {
