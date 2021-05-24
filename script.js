@@ -73,15 +73,26 @@ const en2bn = {
     '9': `৯`,
     '0': `০`,
 }
+const __save_key = "__last_input_data__";
+const __input = document.getElementById('input');
+window.onload = () => {
+    const data = localStorage.getItem(__save_key);
+    if (data) {
+        __input.value = data;
+    }
+}
 
-const inp = document.getElementById('input');
-const bn_res = document.getElementById('bn-result');
+// document.addEventListener('keydown', (event) => {
+//     const pressedCtrl = event.ctrlKey || event.metaKey;
+//     if (pressedCtrl && event.key === '.') {
+//         console.log('Pressed');
+//         state.checked = !state.checked;
+//     }
+// });
 
-inp.addEventListener('keyup', event => {
+__input.addEventListener('keyup', event => {
     const value = event.target.value;
-
     const convertedValue = `${value}`.split('').map(item => en2bn[item] ?? item).join('');
-
-    bn_res.innerHTML = convertedValue;
-    inp.value = convertedValue;
+    __input.value = convertedValue;
+    localStorage.setItem(__save_key, convertedValue);
 })
