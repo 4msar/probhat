@@ -1,0 +1,15 @@
+input,
+textarea {
+    padding: 5px;
+    font-size: 20px;
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+}
+div:first-child {
+    margin-top: 20px;
+    padding-top: 20px;
+}
+div {
+    font-size: 20px;
+}
