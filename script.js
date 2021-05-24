@@ -79,6 +79,7 @@ window.onload = () => {
     const data = localStorage.getItem(__save_key);
     if (data) {
         __input.value = data;
+        __input.focus()
     }
 }
 
