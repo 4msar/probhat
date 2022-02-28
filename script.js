@@ -73,6 +73,8 @@ const en2bn = {
     '9': `৯`,
     '0': `০`,
 }
+
+let writeInEnglish = false;
 const __save_key = "__last_input_data__";
 const __input = document.getElementById('input');
 window.onload = () => {
@@ -83,17 +85,45 @@ window.onload = () => {
     }
 }
 
+const checkIsSelection = (key, event) => {
+    const pressedFunctionalKey = event.ctrlKey || event.metaKey || event.altKey || event.shiftKey || event.key === 'Control' || event.key === 'Meta' || event.key === 'Alt' || event.key === 'Shift' || event.key === 'Backspace' || event.key === 'Delete';
+    
+    if ( pressedFunctionalKey ) return false;
+
+    if (key === 'ArrowLeft' || key === 'ArrowRight' || key === 'ArrowUp' || key === 'ArrowDown') {
+        return false;
+    }
+    return true;
+};
+
+const keyupEventListener = event => {
+    const pressedFunctionalKey = event.ctrlKey || event.metaKey || event.altKey || event.key === 'Control' || event.key === 'Meta' || event.key === 'Alt' || event.key === 'Backspace' || event.key === 'Delete';
+    if (pressedFunctionalKey ) {
+        return;
+    }
+    const value = event.target.value;
+    const convertedValue = `${value}`.split('').map(item => en2bn[item] ?? item).join('');
+    const currentPosition = __input.selectionStart;
+
+    __input.value = convertedValue.slice(0, currentPosition) + convertedValue.slice(currentPosition);
+
+    __input.selectionStart = currentPosition;
+    __input.selectionEnd = currentPosition;
+
+    localStorage.setItem(__save_key, convertedValue);
+};
+
 // document.addEventListener('keydown', (event) => {
 //     const pressedCtrl = event.ctrlKey || event.metaKey;
 //     if (pressedCtrl && event.key === '.') {
-//         console.log('Pressed');
-//         state.checked = !state.checked;
+//         console.log(`Change to ${writeInEnglish ? 'bangla' : 'english'}`);
+//         writeInEnglish = !writeInEnglish;
+//         if (writeInEnglish === true) {
+//             __input.removeEventListener('keyup', keyupEventListener);
+//         } else {
+//             __input.addEventListener('keyup', keyupEventListener);
+//         }
 //     }
 // });
 
-__input.addEventListener('keyup', event => {
-    const value = event.target.value;
-    const convertedValue = `${value}`.split('').map(item => en2bn[item] ?? item).join('');
-    __input.value = convertedValue;
-    localStorage.setItem(__save_key, convertedValue);
-})
+__input.addEventListener('keyup', keyupEventListener);
