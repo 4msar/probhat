@@ -32,7 +32,9 @@ main {
     width: 80%;
     margin: 0 10px;
 }
-
+main .content {
+    height: 100%;
+}
 main .content textarea {
     font: 18px/25px "Kalpurush", "Arial", "sans-serif";
     background: transparent;
