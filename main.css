@@ -24,8 +24,23 @@ body {
 
 footer {
     width: 20%;
+    padding: 10px;
     color: #eee;
     background: #1f1f1f;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+footer .layout-link {
+    display: flex;
+    flex-direction: column;
+}
+
+footer .layout {
+    width: 100%;
+    height: auto;
+    margin: 0;
 }
 
 main {
@@ -69,8 +84,8 @@ footer .wrapper {
     main .content {
         padding: 0px 10px;
         height: 100vh;
-        border-left: 3px solid #ffa729;
-        border-right: 3px solid #ffa729;
+        /* border-left: 3px solid #ffa729;
+        border-right: 3px solid #ffa729; */
     }
 
     .sys main .content {
@@ -84,6 +99,10 @@ footer .wrapper {
 
     footer {
         width: 100%;
+        padding: 0px;
+    }
+    footer .layout-link {
+        margin: 10px;
     }
 }
 

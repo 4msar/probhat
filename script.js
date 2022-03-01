@@ -97,12 +97,16 @@ const checkIsSelection = (key, event) => {
 };
 
 const keyupEventListener = event => {
-    const pressedFunctionalKey = event.ctrlKey || event.metaKey || event.altKey || event.key === 'Control' || event.key === 'Meta' || event.key === 'Alt' || event.key === 'Backspace' || event.key === 'Delete';
-    if (pressedFunctionalKey ) {
-        return;
-    }
     const value = event.target.value;
     const convertedValue = `${value}`.split('').map(item => en2bn[item] ?? item).join('');
+    
+    const pressedFunctionalKey = event.ctrlKey || event.metaKey || event.altKey || event.key === 'Control' || event.key === 'Meta' || event.key === 'Alt' || event.key === 'Backspace' || event.key === 'Delete';
+    if (pressedFunctionalKey ) {
+        if(event.key === 'Backspace'){
+            localStorage.setItem(__save_key, convertedValue);
+        }
+        return;
+    }
     const currentPosition = __input.selectionStart;
 
     __input.value = convertedValue.slice(0, currentPosition) + convertedValue.slice(currentPosition);
