@@ -1,4 +1,8 @@
-# Probhat
+# Probhat for Windows
+
+Download probhat for windows from [here](./ek_probhat_win.zip)
+
+# Probhat for Mac OS
 
 The Probhat layout is redesigned by [Ankur](http://www.ankurbangla.org). Most of the Linux distro are including this layout with their latest releases. And it has been real easy using Probhat on Windows using Avro.
 
